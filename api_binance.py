@@ -64,9 +64,12 @@ BTC_price=priceBTC(url)
 class main:
 
     root=Tk()
+    root.iconbitmap('Cjdowner-Cryptocurrency-Flat-Bitcoin-BTC.ico')
     root.title("Lector de precio de crypto")
     root.geometry("500x700")
     root.resizable(0,0)
+
+    root.configure(bg='white')
     imageneth = PhotoImage(file="giphy.gif")
     imagenbtc = PhotoImage(file="btc2.gif")
 
