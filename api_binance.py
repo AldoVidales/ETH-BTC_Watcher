@@ -39,13 +39,14 @@ def priceBTC(url):
     return BTC_price
 
 def priceETH(url):
+    API_KEY=os.getenv("API_KEY") 
     parameters = {
     'slug':'ethereum',
     'convert':'USD'
     }
     headers={
         'Accepts':'application/json',
-        'X-CMC_PRO_API_KEY':'4bad95b8-4c48-43c2-b67b-13ab49d89276'
+        'X-CMC_PRO_API_KEY':f'{API_KEY}'
     }
     session=Session()
     session.headers.update(headers)
