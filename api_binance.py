@@ -12,6 +12,8 @@ import pprint
 from tkinter import  Button, Label, Tk,PhotoImage
 from PIL import Image
 from dotenv import load_dotenv
+import os
+import sys
 
 load_dotenv()
 
@@ -57,10 +59,15 @@ def priceETH(url):
     return ETH_price
 
 
+
+def reset():
+   os.execl(sys.executable, sys.executable, * sys.argv)
+   
+   
+   
+    
 ETH_price=priceETH(url)
 BTC_price=priceBTC(url)
-
-
     
 class main:
 
@@ -69,6 +76,7 @@ class main:
     root.title("Lector de precio de crypto")
     root.geometry("500x700")
     root.resizable(0,0)
+    
 
     root.configure(bg='white')
     imageneth = PhotoImage(file="giphy.gif")
@@ -78,7 +86,7 @@ class main:
  
 
 
-    precioeth=Label(root,text=f"El precio de ETH es " + "$" +ETH_price)
+    precioeth=Label(root,text=f"El precio de ETH es " + "$" + ETH_price)
     precioeth.config(fg="black",bg="cyan",font=("Verdana",12))
     precioeth.pack()
 
@@ -90,6 +98,7 @@ class main:
     Label(root, image=imagenbtc, bd=1).pack(side="top")
 
     Button(text="EXIT",command=quit).pack()
+    Button(text="RESET",command=reset).pack()
 
 
 
