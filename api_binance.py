@@ -1,29 +1,34 @@
-Key="4bad95b8-4c48-43c2-b67b-13ab49d89276"
+
 
   
  #This example uses Python 2.7 and the python-request library.
 
 from os import close
+import  os
 from requests import Request, Session
 import json
 import requests
 import pprint
 from tkinter import  Button, Label, Tk,PhotoImage
 from PIL import Image
+from dotenv import load_dotenv
 
+load_dotenv()
+
+#enviroment variables
 from requests.sessions import session
 
-url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest'
+url = os.getenv("url")
 
 def priceBTC(url):
-    
+    API_KEY=os.getenv("API_KEY") 
     parameters = {
     'slug':'bitcoin',
     'convert':'USD'
     }
     headers={
         'Accepts':'application/json',
-        'X-CMC_PRO_API_KEY':'4bad95b8-4c48-43c2-b67b-13ab49d89276'
+        'X-CMC_PRO_API_KEY':f'{API_KEY}'
     }
     session=Session()
     session.headers.update(headers)
